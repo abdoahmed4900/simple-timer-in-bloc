@@ -8,9 +8,10 @@ class TimerCubit extends Cubit<TimerState> {
   late StreamSubscription<int> subscription;
   late Stream<int> timeStream = Stream.periodic(const Duration(seconds: 1),
       (i) => state.duration > 0 ? --state.duration : state.duration);
-  late String time = '01:00';
+  late String time;
 
   TimerCubit() : super(TimerStarted(60)) {
+    time = '01:00';
     listenToStream();
   }
 
